@@ -53,6 +53,6 @@ def track(matrix_coefficients, distortion_coefficients):
 
     cap.release()
     out.release()
-
+    #kekw
     cv2.destroyAllWindows()
 

@@ -3,9 +3,9 @@ import cv2
 import cv2.aruco as aruco
 
 
-def track(matrix_coefficients, distortion_coefficients):
+def track(matrix_coefficients, distortion_coefficients, output_file):
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter('output.avi', fourcc, 29, (1080,1920))
+    out = cv2.VideoWriter(output_file + '.avi', fourcc, 29, (1080,1920))
     cap = cv2.VideoCapture('secondvid.mp4')
     while cap.isOpened():
         ret, frame = cap.read()

@@ -40,8 +40,9 @@ def calibrate(dirpath, prefix, image_format, square_size, width=9, height=6):
 
             # Draw and display the corners
             img = cv2.drawChessboardCorners(img, (width, height), corners2, ret)
+
             cv2.imshow('ímg', img)
-            cv2.waitKey(30)
+            cv2.waitKey(1000)
 
     ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
 

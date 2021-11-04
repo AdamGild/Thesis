@@ -28,10 +28,13 @@ def rotate_marker_corners(rvec, markersize, tvec = None):
         C = tvec #center of marker in camworld
         for i, mc in enumerate(markercorners):
             markercorners[i] = np.add(C,mc) #add tvec to each corner
-    #print('Vec X, Y, C, dot(X,Y)', X,Y,C, np.dot(X,Y)) # just for debug
+
     markercorners = np.array(markercorners,dtype=np.float32) # type needed when used as input to cv2
+
+    #calculating the two vectors in the marker plane, which is the two edges
     side1 = markercorners[0] - markercorners[1]
     side2 = markercorners[2] - markercorners[1]
+    #using these vectors to calculate marker normal
     normal = np.cross(side1, side2)
     return normal
 
@@ -41,16 +44,3 @@ def rotate_marker_corners(rvec, markersize, tvec = None):
 
 
 
-# Copyright [2021] [Marco Noll]
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
